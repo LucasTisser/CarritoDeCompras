@@ -35,15 +35,16 @@ function cargarEventListeners(){
 function agregarProducto(e){
     // Previene que al tocar el boton no se deslize la pantalla hacia arriba
     e.preventDefault();
-    Swal.fire({
+    
+    if (e.target.classList.contains(`agregarCarrito`) ) {
+        Swal.fire({
         position: 'top-end',
         icon: 'success',
         title: 'Su producto ha sido agregado con exito',
         showConfirmButton: false,
         timer: 1500
-    })
-    if (e.target.classList.contains(`agregarCarrito`) ) {
-        const productoSeleccionado = e.target.parentElement.parentElement.parentElement
+        })
+        const productoSeleccionado = e.target.parentElement.parentElement.parentElement;
         leerDatosProducto(productoSeleccionado);
     }
     
